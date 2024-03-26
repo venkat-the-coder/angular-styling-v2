@@ -1,0 +1,78 @@
+1. Angular Component structure
+
+-- basic component structure with its decorator
+
+
+view encapsulation modes
+1. none
+2. emulated
+3. shadow dom
+
+Angular will add some unique identifier tag to each node of template to distinguish the
+styles
+
+view encapsulation : emulated  --> will be work on this approach ( this is default)
+encapsulation:ViewEncapsulation.emulated
+
+view encapsulation : None --> will apply to all nodes
+encapsulation:ViewEncapsulation.None
+
+view encapsulation : None --> will apply to all nodes within the created shadowDom
+but incompitable with lot of browsers
+encapsulation:ViewEncapsulation.shadowDom
+
+
+========================================================================
+Several ways of adding styles to Angular
+1. embedded styles
+2. component level styles inline 
+3. seperate file and refer it in component style urls
+4. global level style sheet
+5. adding ref of stylesheet ( minified version) in angular.json
+6. using css @imports
+
+
+
+when using external style sheets and refer it to component
+-- angular still adds the unique identifier to nodes 
+-- it adds all those styles in a style tag and set it on the header while redering 
+
+
+similarly we can add html file and refere it into templateUrls
+-- only single template file can be refered to templateUrls
+
+
+========================================================================
+Emulated Css selectors
+:host --> root level class selector nothing but a actual component
+:host-context --> also looks the presnese of particular class in childrens and parent or host element inside the component
+
+:host(.example)
+{
+    will be applied if the host element contains the example class
+    <app-nav class='example'></app-nav>
+}
+
+
+use host:context puposefully
+
+
+we use deep combinators to apply th style to depth elements of parent or like projected content
+it will go through the boundries of shadowdom and apply styles
+the below will apply style to the elements inside the <ng-content></ng-content>
+
+ ::ng-deep a {
+    color: #fff;
+    padding: 0 1em;
+    text-decoration: none;
+  }
+
+  ::ng-deep a:hover {
+    text-decoration: underline;
+  }
+
+
+  we can add host to get to more precise styling
+   :host ul ::ng-deep a:hover {
+    text-decoration: underline;
+  }
