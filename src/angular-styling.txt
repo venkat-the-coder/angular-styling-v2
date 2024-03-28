@@ -76,3 +76,37 @@ the below will apply style to the elements inside the <ng-content></ng-content>
    :host ul ::ng-deep a:hover {
     text-decoration: underline;
   }
+
+  ==============================================================
+  Global styles --> traditional approach
+
+  we can create a seperate styling sheets inside styles folder wich can be sass
+  and can be imported into the global style.scs file 
+  or we can add as styleurls of app component and set encapsulation as none 
+
+
+ Global styles --> modular approach
+
+
+class based system:
+
+1. we can create many partia global styles which is organized in to unique folders that can be imported in global style sheet and used
+2. we can also break down them into the component specific styles.
+3. always need to have better naming standard when comes to selector to avoide conflicts
+
+Mixins an variables Only:
+1. sometimes components elements becomes messy adding thier own classes ,global classes and other 3rd party classes
+2. to over come we use mixins and variables
+
+-- load the styles set path of those styles i angular.json
+
+angular.json --> project --> build --> after assets
+"stylePreprocessorOptions":{
+  "includePaths":[
+    "path1"
+    "path2"
+  ]
+}
+
+=======================================================================
+==> Naming convention on component specific styles 
