@@ -110,3 +110,28 @@ angular.json --> project --> build --> after assets
 
 =======================================================================
 ==> Naming convention on component specific styles 
+
+1. usually naming the styling using its selector should follow some approach
+where we can actually use BEM  block element modifier
+
+ex:
+<ul class="app-navbar-header"></ul>
+app--> block
+navbar --> element
+header --> modifier 
+
+the above can also be done like below which is not a good practice
+
+<ul class="items"></ul>
+
+
+example:
+<ul class="app-navbar-header">
+  <li class="app-navbar-header--item>
+    <a class="app-navabr-header--item--link"></a>
+  </li>
+</ul>
+
+
+
+
